@@ -1,0 +1,16 @@
+// ignore_for_file: constant_identifier_names
+
+abstract class Routes {
+  static const splash = '/splash';
+  static const welcome = '/welcome';
+  static const SIGN_IN = '/sign_in';
+  static const SIGN_UP = '/sign_up';
+  static const ON_BOARDING_WELCOME = '/onboarding_welcome';
+  static const SUPER_ADMIN = '/super_admin';
+  static const SUPER_ADMIN_BOTTOM_NAV = '/super_admin_bottom_nav';
+  static const REPORTS_AND_ANALYTICS_SUPER_ADMIN = '/reports_and_analytics_super_admin';
+  static const SUPER_ADMIN_PROFILE = '/super_admin_profile';
+  static const WELCOME_VIEW = '/welcome_view';
+  static const CLUB_MANAGEMENT = '/super_admin_club_managent';
+  static const CREATE_GAME = '/create_game';
+}
