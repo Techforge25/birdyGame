@@ -13,4 +13,6 @@ abstract class Routes {
   static const WELCOME_VIEW = '/welcome_view';
   static const CLUB_MANAGEMENT = '/super_admin_club_managent';
   static const CREATE_GAME = '/create_game';
+  static const MANAGE_GAMES = '/manage_games';
+  static const CLUB_ADMIN = '/club_admin';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CounterSettingTile extends StatelessWidget {
   final String title;
@@ -32,7 +33,7 @@ class CounterSettingTile extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.grey.shade100,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(color: Colors.grey.shade200),
       ),
@@ -67,8 +68,9 @@ class CounterSettingTile extends StatelessWidget {
                 Text(
                   subtitle,
                   style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey.shade600,
+                    fontSize: 12.sp,
+                    color: Colors.grey.shade700,
+                    fontWeight: FontWeight.w700
                   ),
                 ),
               ],

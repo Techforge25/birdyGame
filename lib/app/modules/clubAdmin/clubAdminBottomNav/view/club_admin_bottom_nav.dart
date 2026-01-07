@@ -35,7 +35,7 @@ class ClubAdminBottomNav extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               _navItem(
-                icon: Icons.dashboard,
+                icon: Icons.dashboard_outlined,
                 label: "Home",
                 index: 0,
                 ),
@@ -50,8 +50,8 @@ class ClubAdminBottomNav extends StatelessWidget {
                 index: 2,
                 ),
               _navItem(
-                icon: FontAwesomeIcons.trophy,
-                label: "Admins",
+                icon: Icons.sports_score_outlined,
+                label: "Scores",
                 index: 3,
               ),
               _navItem(

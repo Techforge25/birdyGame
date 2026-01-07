@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum GameStatus { active, draft, completed }
 
 class GameModel {
@@ -22,7 +24,7 @@ class GameModel {
     required this.passkey,
     required this.status,
     this.currentHole = 1,
-    this.totalHoles = 9,
+    this.totalHoles = 18,
     this.par = 3,
     this.totalTeams = 0,
     this.totalPlayers = 0,
@@ -33,20 +35,41 @@ class GameModel {
 }
 
 class TeamModel {
-  String name;
-  int playersCount;
-  int birdies;
-  int holesRemaining;
-  double progress; // 0.0 - 1.0
+  final String? name;
+  final int? joinedPlayers;
+  final int? playersCount;
+  final int? birdies;
+  final int? holesRemaining;
+  final double? progress; // 0.0 - 1.0
 
   TeamModel({
-    required this.name,
-    required this.playersCount,
-    required this.birdies,
-    required this.holesRemaining,
-    required this.progress,
+    this.name,
+    this.playersCount,
+    this.birdies,
+    this.holesRemaining,
+    this.progress,
+    this.joinedPlayers, required int playersPerTeam,
   });
 }
+class TeamFormModel {
+  final TextEditingController nameController;
+  final List<PlayerFormModel> players;
+
+  TeamFormModel({
+    required this.nameController,
+    required this.players,
+  });
+}
+
+class PlayerFormModel {
+  final TextEditingController nameController;
+  final TextEditingController emailController;
+
+  PlayerFormModel()
+      : nameController = TextEditingController(),
+        emailController = TextEditingController();
+}
+
 
 
 

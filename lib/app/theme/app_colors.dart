@@ -20,6 +20,7 @@ class AppColors {
   static Color get lightGreenColor => Color(0xffDCFCE7);
 
   static Color flashyGreen = Color(0xffE2FFEF);
+  static Color darkGreen = Color(0xff254F2C);
   static Color flashyYellow = Color(0xffF4C9A2);
   static Color flashyRed = Color(0xffFECACA);
   static Color flashyPurple = Color(0xffE9D5FF);

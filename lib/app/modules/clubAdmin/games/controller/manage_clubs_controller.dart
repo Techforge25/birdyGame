@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 class ManageClubsController extends GetxController {
   RxInt selectedTab = 0.obs;
+  RxInt selectedGameTab = 0.obs;
   Rx<String?> selectedClub = Rx<String?>(null);
 
   RxList<GameModel> games = <GameModel>[].obs;
@@ -14,7 +15,9 @@ class ManageClubsController extends GetxController {
     selectedTab.value = index;
     selectedClub.value = null;
   }
-
+void changeGameTab(int index) {
+    selectedGameTab.value = index;
+  }
   void addGame(GameModel game) {
     games.insert(0, game); // latest on top
   }
