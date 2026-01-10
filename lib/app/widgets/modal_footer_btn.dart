@@ -8,11 +8,12 @@ class ModalFooterBtn extends StatelessWidget {
   final String text2;
   final VoidCallback onTap1;
   final VoidCallback onTap2;
+  final Color? borderColor;
   
   const ModalFooterBtn({
     super.key,
     required this.text1,
-    required this.text2, required this.onTap1, required this.onTap2, this.fontSize, 
+    required this.text2, required this.onTap1, required this.onTap2, this.fontSize, this.borderColor,
   });
 
   @override
@@ -45,7 +46,7 @@ class ModalFooterBtn extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
-              side: BorderSide(color: Colors.grey[300]!),
+              side: BorderSide(color: borderColor ?? Colors.grey[300]!,width: 1.5),
             ),
             child: Text(
               text2,

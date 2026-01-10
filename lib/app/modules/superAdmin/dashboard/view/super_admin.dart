@@ -24,7 +24,7 @@ class SuperAdminDashboard extends StatelessWidget {
               SizedBox(height: 20.h,),
               ClubsDetailGrid(value1: 109.toString(), value2: 75.toString(), value3: 25.toString(), value4: 12.toString(),),
               SizedBox(height: 20.h,),
-              CustomGradientGrid(value1: 109, value2: 75, value3: 25, value4: 12,),
+              CustomGradientGrid(),
               SizedBox(height: 20.h,),
               CustomDoubleBar(),
             ],

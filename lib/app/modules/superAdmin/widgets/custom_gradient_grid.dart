@@ -7,17 +7,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class CustomGradientGrid extends StatelessWidget {
-  final int value1;
-  final int value2;
-  final int value3;
-  final int value4;
 
   const CustomGradientGrid({
     super.key,
-    required this.value1,
-    required this.value2,
-    required this.value3,
-    required this.value4,
   });
 
   @override
@@ -40,7 +32,6 @@ class CustomGradientGrid extends StatelessWidget {
           title: "Add New Clubs",
           subTitle: "Create a new club and assign admins.",
           iconBgColor: Color(0xff1A4FA3),
-          value: value1,
           icon: Icons.add,
         ),
         _buildStatCard(
@@ -52,7 +43,6 @@ class CustomGradientGrid extends StatelessWidget {
           iconBgColor: Color(0xff254F2C),
           title: "Manage Clubs",
           subTitle: "View, edit, block, or remove clubs.",
-          value: value2,
           icon: Icons.sports_golf,
         ),
 
@@ -66,7 +56,6 @@ class CustomGradientGrid extends StatelessWidget {
           iconBgColor: AppColors.secondary,
           title: "Manage Admins",
           subTitle: "Control club admins, roles, and access.",
-          value: value3,
           icon: Icons.settings,
         ),
         _buildStatCard(
@@ -78,7 +67,6 @@ class CustomGradientGrid extends StatelessWidget {
           iconBgColor: Color(0xff7A2BAA),
           title: "Analytics",
           subTitle: "Track performance and view statistics.",
-          value: value4,
           icon: Icons.bar_chart,
           valueColor: Colors.red,
         ),
@@ -91,7 +79,6 @@ class CustomGradientGrid extends StatelessWidget {
     required String subTitle,
     required IconData icon,
     required Color iconBgColor,
-    required int value,
     required Color color1,
     required Color color2,
     required VoidCallback onTap,

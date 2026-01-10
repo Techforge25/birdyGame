@@ -15,4 +15,6 @@ abstract class Routes {
   static const CREATE_GAME = '/create_game';
   static const MANAGE_GAMES = '/manage_games';
   static const CLUB_ADMIN = '/club_admin';
+  static const CLUB_ADMIN_BOTTOM_NAV = '/club_admin_bottom_nav';
+  static const SCORES = '/club_scores';
 }

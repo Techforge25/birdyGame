@@ -1,14 +1,14 @@
-import 'package:bierdygame/app/modules/clubAdmin/clubAdminBottomNav/controller/club_admin_bot_nav_controller.dart';
+import 'package:bierdygame/app/modules/player/playerBottomNav/controller/player_bottom_controller.dart';
 import 'package:bierdygame/app/theme/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ClubAdminBottomNav extends StatelessWidget {
-  ClubAdminBottomNav({super.key});
+class PlayerBottomNav extends StatelessWidget {
+  PlayerBottomNav({super.key});
 
-  final ClubAdminBottomNavController controller = Get.put(
-    ClubAdminBottomNavController(),
+  final PlayerBottomController controller = Get.put(
+    PlayerBottomController(),
   );
 
   @override
@@ -39,25 +39,20 @@ class ClubAdminBottomNav extends StatelessWidget {
                 index: 0,
                 ),
               _navItem(
-                icon: CupertinoIcons.game_controller,
-                label: "Games",
+                icon: Icons.sports_golf,
+                label: "Join Game",
                 index: 1,
                 ),
               _navItem(
-                icon: Icons.sports_golf,
-                label: "New Game",
+                icon: Icons.bar_chart_outlined,
+                label: "My Stats",
                 index: 2,
                 ),
               _navItem(
-                icon: Icons.sports_score_outlined,
-                label: "Scores",
+                icon: Icons.person_2_outlined,
+                label: "Profile",
                 index: 3,
               ),
-              _navItem(
-                icon: Icons.person_outline,
-                label: "Profile", 
-                index: 4,
-                ),
             ],
           ),
         ),

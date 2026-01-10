@@ -50,7 +50,7 @@ class ManageAdmins extends GetView<ManageAdminsController> {
                 borderRadius: BorderRadius.circular(30.r),
               ),
               SizedBox(height: 15.h),
-              AdminCard()
+              AdminCard(),
               
             ],
           ),

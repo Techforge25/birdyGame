@@ -1,9 +1,13 @@
 import 'package:bierdygame/app/modules/auth/bindings/auth_bindings.dart';
 import 'package:bierdygame/app/modules/auth/view/signInView/sign_in.dart';
 import 'package:bierdygame/app/modules/auth/view/signUpView/sign_up.dart';
+import 'package:bierdygame/app/modules/clubAdmin/clubAdminBottomNav/view/club_admin_bottom_nav.dart';
 import 'package:bierdygame/app/modules/clubAdmin/dashboard/view/dashboard_view.dart';
 import 'package:bierdygame/app/modules/clubAdmin/games/view/manage_games.dart';
 import 'package:bierdygame/app/modules/clubAdmin/newGame/view/new_game_view.dart';
+import 'package:bierdygame/app/modules/clubAdmin/scores/view/scores_view.dart';
+import 'package:bierdygame/app/modules/player/playerDashBoard/binding/player_dashboard_binding.dart';
+import 'package:bierdygame/app/modules/player/playerDashBoard/view/player_dashboard_view.dart';
 import 'package:bierdygame/app/modules/superAdmin/clubs/view/club_management_sper_admin.dart';
 import 'package:bierdygame/app/modules/superAdmin/profile/view/profile_screen.dart';
 import 'package:bierdygame/app/modules/superAdmin/reportsAndAnalytics/view/reports_and_analytics.dart';
@@ -55,8 +59,17 @@ class AppPages {
       page: () => SuperAdminClubManagement(),
     ),
     // Club Admins
-    GetPage(name: Routes.CLUB_ADMIN, page: ()=>ClubAdminDashboard()),
+    GetPage(name: Routes.CLUB_ADMIN_BOTTOM_NAV, page: ()=>ClubAdminBottomNav(),),
+    GetPage(name: Routes.CLUB_ADMIN, page: ()=>ClubAdminDashboard(),),
+    GetPage(name: Routes.MANAGE_GAMES, page: () => ManageClubsGames(),),
     GetPage(name: Routes.CREATE_GAME, page: () => NewGameView(),),
-    GetPage(name: Routes.MANAGE_GAMES, page: () => ManageClubsGames()),
+    GetPage(name: Routes.SCORES, page: ()=> ScoresView(),),
+    //users
+    GetPage(
+  name: '/player-dashboard',
+  page: () => const PlayerDashboardView(),
+  binding: PlayerDashboardBinding(),
+),
+
   ];
 }

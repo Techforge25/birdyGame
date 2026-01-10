@@ -1,6 +1,7 @@
 import 'package:bierdygame/app/modules/auth/controller/auth_controller.dart';
 import 'package:bierdygame/app/modules/auth/view/signUpView/sign_up.dart';
 import 'package:bierdygame/app/modules/clubAdmin/clubAdminBottomNav/view/club_admin_bottom_nav.dart';
+import 'package:bierdygame/app/modules/player/playerBottomNav/view/player_bottom_nav.dart';
 import 'package:bierdygame/app/modules/superAdmin/super_admin_bottom_nav/view/super_admin_bottom_nav.dart';
 import 'package:bierdygame/app/theme/app_colors.dart';
 import 'package:bierdygame/app/theme/app_text_styles.dart';
@@ -57,7 +58,7 @@ class SignInView extends GetView<AuthController> {
             Text("Forget Password ?",style: AppTextStyles.bodySmall.copyWith(fontSize: 13,color: AppColors.primary,),),
             SizedBox(height: 40.h,),
             CustomElevatedButton(onPressed: (){
-              Get.to(()=>ClubAdminBottomNav());
+              Get.to(()=>PlayerBottomNav());
             }, btnName: "Login"),
             SizedBox(height: 10.h,),
             Row(
@@ -69,7 +70,7 @@ class SignInView extends GetView<AuthController> {
                     Get.to(()=>SignUpView());
                   },
                   child: Text("Sign Up",style: AppTextStyles.bodySmall.copyWith(color: AppColors.primary),),
-                )
+                ),
               ],
             )
           ],

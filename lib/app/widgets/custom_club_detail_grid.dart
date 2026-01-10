@@ -1,7 +1,6 @@
 import 'package:bierdygame/app/theme/app_colors.dart';
 import 'package:bierdygame/app/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class ClubsDetailGrid extends StatelessWidget {
   final String value1;

@@ -1,4 +1,5 @@
 import 'package:bierdygame/app/modules/clubAdmin/scores/controller/scores_controller.dart';
+import 'package:bierdygame/app/modules/player/playerStats/view/player_stats_view.dart';
 import 'package:bierdygame/app/modules/superAdmin/notifications/widgets/notification_tab_bar.dart';
 import 'package:bierdygame/app/modules/teamProfile/view/team_profile_view.dart';
 import 'package:bierdygame/app/theme/app_colors.dart';
@@ -19,17 +20,7 @@ class ScoresView extends GetView<ScoresController> {
         return TeamProfileView(onBack: controller.backToGames);
       }
       if (controller.showPlayerRank.value) {
-        return Center(
-          child: Row(
-            children: [
-              GestureDetector(
-                onTap: controller.backToGames,
-                child: Icon(Icons.back_hand),
-              ),
-              Text("Player Profile View"),
-            ],
-          ),
-        );
+        return PlayerStatsView(onBack: controller.backToGames, color: AppColors.primary,);
       }
       return SafeArea(
         child: Padding(

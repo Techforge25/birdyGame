@@ -1,4 +1,4 @@
-import 'package:bierdygame/app/modules/teamProfile/controller/team_profile_controller.dart';
+import 'package:bierdygame/app/modules/player/playerStats/controller/player_stats_controller.dart';
 import 'package:bierdygame/app/theme/app_colors.dart';
 import 'package:bierdygame/app/theme/app_text_styles.dart';
 import 'package:bierdygame/app/widgets/custom_club_detail_grid.dart';
@@ -7,10 +7,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
-class TeamProfileView extends GetView<TeamProfileController> {
+class PlayerStatsView extends GetView<PlayerStatsController> {
   final VoidCallback onBack;
+  final Color? color;
 
-  const TeamProfileView({super.key, required this.onBack});
+  const PlayerStatsView(  {super.key, required this.onBack,required this.color,});
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +21,10 @@ class TeamProfileView extends GetView<TeamProfileController> {
         backgroundColor: AppColors.scaffoldBackground,
         leading: IconButton(
           onPressed: onBack,
-          icon: Icon(Icons.arrow_back_ios, size: 18, color: AppColors.primary),
+          icon: Icon(Icons.arrow_back_ios, size: 18, color: color ?? AppColors.primary),
         ),
         title: Text(
-          "Team Stats",
+          "Stats",
           style: AppTextStyles.bodyMedium2.copyWith(
             fontWeight: FontWeight.w600,
             fontSize: 16,
@@ -37,7 +38,7 @@ class TeamProfileView extends GetView<TeamProfileController> {
             children: [
               CircleAvatar(radius: 30),
               Text(
-                "Team Name",
+                "Player Name",
                 style: AppTextStyles.bodyLarge.copyWith(fontSize: 18),
               ),
               Container(
@@ -47,7 +48,7 @@ class TeamProfileView extends GetView<TeamProfileController> {
                   borderRadius: BorderRadius.circular(20.r),
                 ),
                 child: Text(
-                  "Club Name",
+                  "Active button",
                   style: AppTextStyles.bodyMedium.copyWith(
                     color: AppColors.primary,
                   ),
