@@ -1,4 +1,5 @@
 import 'package:bierdygame/app/modules/player/playerDashBoard/view/player_dashboard_view.dart';
+import 'package:bierdygame/app/modules/player/playerJoinGame/view/player_join_game.dart';
 import 'package:bierdygame/app/modules/player/playerStats/view/player_stats_view.dart';
 import 'package:bierdygame/app/theme/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ class PlayerBottomController extends GetxController {
 
   final List<Widget> screens = [
     PlayerDashboardView(),
-    Container(child: Text("My Stats")),
+    PlayerJoinGame(),
     PlayerStatsView(onBack: () {}, color: AppColors.white),
     Container(child: Text("Profile")),
   ];

@@ -16,6 +16,7 @@ class SignInView extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(AuthController());
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 51, vertical: 100),
@@ -33,46 +34,80 @@ class SignInView extends GetView<AuthController> {
             ),
             SizedBox(height: 30.h),
             CustomTextField(
+              controller: controller.emailController,
               hintText: "Enter your email",
-              hintStyle: AppTextStyles.bodyMedium.copyWith(
-                color: AppColors.borderColor,
-              ),
               prefixIcon: Icon(Icons.mail_outline, color: AppColors.primary),
               bgcolor: AppColors.textFieldBgColor,
-              borderSide: BorderSide(color: AppColors.borderColorLight, width: 1.5),
+              borderSide: BorderSide(
+                color: AppColors.borderColorLight,
+                width: 1.5,
+              ),
               borderRadius: BorderRadius.circular(10.r),
             ),
             SizedBox(height: 20.h),
             CustomTextField(
+              controller: controller.passwordController,
               hintText: "Enter Your Password",
-              hintStyle: AppTextStyles.bodyMedium.copyWith(
-                color: AppColors.borderColor,
+              prefixIcon: Icon(
+                Icons.password_outlined,
+                color: AppColors.primary,
               ),
-              prefixIcon: Icon(Icons.password_outlined, color: AppColors.primary),
               suffixIcon: Icon(Icons.visibility_outlined),
               bgcolor: AppColors.textFieldBgColor,
-              borderSide: BorderSide(color: AppColors.borderColorLight, width: 1.5),
+              borderSide: BorderSide(
+                color: AppColors.borderColorLight,
+                width: 1.5,
+              ),
               borderRadius: BorderRadius.circular(10.r),
             ),
-            SizedBox(height: 10.h,),
-            Text("Forget Password ?",style: AppTextStyles.bodySmall.copyWith(fontSize: 13,color: AppColors.primary,),),
-            SizedBox(height: 40.h,),
-            CustomElevatedButton(onPressed: (){
-              Get.to(()=>PlayerBottomNav());
-            }, btnName: "Login"),
-            SizedBox(height: 10.h,),
+
+            SizedBox(height: 10.h),
+            Text(
+              "Forget Password ?",
+              style: AppTextStyles.bodySmall.copyWith(
+                fontSize: 13,
+                color: AppColors.primary,
+              ),
+            ),
+            SizedBox(height: 40.h),
+            CustomElevatedButton(
+              onPressed: () {
+                final email = controller.emailController.text.trim();
+
+                if (email == "superadmin123@gmail.com") {
+                  Get.offAll(() => SuperAdminBottomNav());
+                } else if (email == "clubadmin123@gmail.com") {
+                  Get.offAll(() => ClubAdminBottomNav());
+                } else if (email == "player123@gmail.com"){
+                  Get.offAll(() => PlayerBottomNav());
+                }else{
+                  Get.snackbar("Enter Email",'superadmin123@gmail.com" for superadmin "clubadmin123@gmail.com" for Club Admin and player123@gmail.com for player');
+                }
+              },
+              btnName: "Login",
+            ),
+
+            SizedBox(height: 10.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Don't have an account ? ",style: AppTextStyles.bodySmall,),
+                Text(
+                  "Don't have an account ? ",
+                  style: AppTextStyles.bodySmall,
+                ),
                 GestureDetector(
-                  onTap: (){
-                    Get.to(()=>SignUpView());
+                  onTap: () {
+                    Get.to(() => SignUpView());
                   },
-                  child: Text("Sign Up",style: AppTextStyles.bodySmall.copyWith(color: AppColors.primary),),
+                  child: Text(
+                    "Sign Up",
+                    style: AppTextStyles.bodySmall.copyWith(
+                      color: AppColors.primary,
+                    ),
+                  ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

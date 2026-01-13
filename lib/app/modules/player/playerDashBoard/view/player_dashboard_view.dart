@@ -5,8 +5,6 @@ import 'package:bierdygame/app/modules/player/playerDashBoard/view/widget/custom
 import 'package:bierdygame/app/modules/player/playerDashBoard/view/widget/join_game_card.dart';
 import 'package:bierdygame/app/theme/app_colors.dart';
 import 'package:bierdygame/app/theme/app_text_styles.dart';
-import 'package:bierdygame/app/widgets/custom_elevated_button.dart';
-import 'package:bierdygame/app/widgets/custom_text_field.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -131,7 +129,7 @@ class PlayerDashboardView extends GetView<PlayerDashboardController> {
                     color1: Color(0xffF1F8E9),
                     color2: Color(0xffDCEDC8),
                     onTap: () {
-                      // Get.find<PlayerBottomController>().changeTab(3);
+                      Get.find<PlayerBottomController>().changeTab(1);
                     },
                   ),
                 ),

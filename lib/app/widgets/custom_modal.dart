@@ -7,12 +7,13 @@ class CustomModal extends StatelessWidget {
   final String title;
   final Widget content;
   final List<Widget> actions;
+  final TextStyle? titleStyle;
 
   const CustomModal({
     super.key,
     required this.title,
     required this.content,
-    required this.actions,
+    required this.actions, this.titleStyle,
   });
 
   @override
@@ -39,7 +40,7 @@ class CustomModal extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(title, style: AppTextStyles.bodyMedium),
+                    Text(title, style: titleStyle ??  AppTextStyles.bodyMedium),
                     IconButton(
                       icon: const Icon(Icons.close),
                       onPressed: () => Get.back(),
