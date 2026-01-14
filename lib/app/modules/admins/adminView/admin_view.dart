@@ -4,7 +4,6 @@ import 'package:bierdygame/app/modules/admins/widget/status_container.dart';
 import 'package:bierdygame/app/theme/app_colors.dart';
 import 'package:bierdygame/app/theme/app_text_styles.dart';
 import 'package:bierdygame/app/widgets/custom_form_field.dart';
-import 'package:bierdygame/app/widgets/custom_text_field.dart';
 import 'package:bierdygame/app/widgets/modal_footer_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +14,7 @@ class AdminView extends GetView<AdminController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(AdminController());
+    final AdminController controller = Get.put(AdminController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.scaffoldBackground,
@@ -35,84 +34,147 @@ class AdminView extends GetView<AdminController> {
         centerTitle: true,
       ),
       body: Padding(
-  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-  child: Column(
-    children: [
-      Expanded(
-        child: ListView(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+        child: Column(
           children: [
-            buildAdminDetailCard(),
-            SizedBox(height: 25.h),
-            Text("Edit Admin Details", style: AppTextStyles.bodyMedium2),
+            Expanded(
+              child: ListView(
+                children: [
+                  buildAdminDetailCard(),
+                  SizedBox(height: 25.h),
+                  Text("Edit Admin Details", style: AppTextStyles.bodyMedium2),
+                  SizedBox(height: 20.h),
+
+                  CustomFormField(
+                    label: "Full Name",
+                    borderSide: BorderSide(color: AppColors.borderColorLight),
+                    hint: "Admin Name",
+                    borderRadius: BorderRadius.circular(12),
+                    labeltextStyle: AppTextStyles.bodyMedium.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  SizedBox(height: 12.h),
+                  CustomFormField(
+                    label: "Email",
+                    borderSide: BorderSide(color: AppColors.borderColorLight),
+                    borderRadius: BorderRadius.circular(12),
+                    hint: "Admin email",
+                    labeltextStyle: AppTextStyles.bodyMedium.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  SizedBox(height: 12.h),
+                  CustomFormField(
+                    label: "Club Name",
+                    borderSide: BorderSide(color: AppColors.borderColorLight),
+                    borderRadius: BorderRadius.circular(12),
+                    hint: "Admin Club",
+                    labeltextStyle: AppTextStyles.bodyMedium.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  SizedBox(height: 12.h),
+                  CustomFormField(
+                    label: "Role",
+                    borderSide: BorderSide(color: AppColors.borderColorLight),
+                    borderRadius: BorderRadius.circular(12),
+                    hint: "Admin Role",
+                    labeltextStyle: AppTextStyles.bodyMedium.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  SizedBox(height: 12.h),
+
+                  Obx(
+                    () => buildWidgetStatus(
+                      status: controller.status.value,
+                      onChanged: (v) => controller.status.value = v,
+                    ),
+                  ),
+
+                  SizedBox(height: 20.h),
+                  Text("Account Actions", style: AppTextStyles.bodyMedium2),
+                  SizedBox(height: 10.h),
+                  _buildAccountActionCards(
+                    title: "Reset Password",
+                    subtitle: "Send a new Temporary Password",
+                    onTap: controller.resetPassword,
+                    icon: Icon(Icons.restore, color: AppColors.darkBlue),
+                    borderColor: AppColors.darkBlue,
+                    iconBgColor: AppColors.flashyblue,
+                    bgColor: AppColors.flashyblue,
+                  ),
+                  SizedBox(height: 8.h),
+                  _buildAccountActionCards(
+                    title: "Suspend Account",
+                    subtitle: "Disable login access for this Admin",
+                    onTap: controller.suspendAccount,
+                    icon: Icon(Icons.pause, color: AppColors.secondary),
+                    borderColor: AppColors.secondary,
+                    iconBgColor: AppColors.flashyYellow,
+                    bgColor: AppColors.flashyYellow,
+                  ),
+                  SizedBox(height: 8.h),
+                  _buildAccountActionCards(
+                    title: "Delete Account",
+                    subtitle: "Permanently remove this Admin",
+                    onTap: controller.deleteAccount,
+                    icon: Icon(Icons.delete, color: AppColors.darkRed),
+                    borderColor: AppColors.darkRed,
+                    iconBgColor: AppColors.flashyRed,
+                    bgColor: AppColors.flashyRed,
+                  ),
+                ],
+              ),
+            ),
+
             SizedBox(height: 20.h),
-
-            CustomFormField(
-              label: "Full Name",
-              borderSide: BorderSide(color: AppColors.borderColorLight),
-              hint: "Admin Name",
-              borderRadius: BorderRadius.circular(12),
-              labeltextStyle: AppTextStyles.bodyMedium.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+            ModalFooterBtn(
+              borderColor: AppColors.primary,
+              text1: "Save Changes",
+              text2: "Cancel",
+              onTap1: () {},
+              onTap2: () {},
             ),
-
-            SizedBox(height: 12.h),
-            CustomFormField(
-              label: "Email",
-              borderSide: BorderSide(color: AppColors.borderColorLight),
-              borderRadius: BorderRadius.circular(12),
-              hint: "Admin email",
-              labeltextStyle: AppTextStyles.bodyMedium.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            SizedBox(height: 12.h),
-            CustomFormField(
-              label: "Club Name",
-              borderSide: BorderSide(color: AppColors.borderColorLight),
-              borderRadius: BorderRadius.circular(12),
-              hint: "Admin Club",
-              labeltextStyle: AppTextStyles.bodyMedium.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            SizedBox(height: 12.h),
-            CustomFormField(
-              label: "Role",
-              borderSide: BorderSide(color: AppColors.borderColorLight),
-              borderRadius: BorderRadius.circular(12),
-              hint: "Admin Role",
-              labeltextStyle: AppTextStyles.bodyMedium.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            SizedBox(height: 12.h),
-
-            Obx(() => buildWidgetStatus(
-                  status: controller.status.value,
-                  onChanged: (v) => controller.status.value = v,
-                )),
-
-            SizedBox(height: 20.h),
-            Text("Account Actions", style: AppTextStyles.bodyMedium2),
             SizedBox(height: 20.h),
           ],
         ),
       ),
-      ModalFooterBtn(
-        borderColor: AppColors.primary,
-        text1: "Save Changes",
-        text2: "Cancel",
-        onTap1: () {},
-        onTap2: () {},
-      ),
-    ],
-  ),
-),
+    );
+  }
 
+  Widget _buildAccountActionCards({
+    required String title,
+    required String subtitle,
+    required VoidCallback onTap,
+    required Icon icon,
+    required Color borderColor,
+    required Color iconBgColor,
+    required Color bgColor,
+  }) {
+    return Container(
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.circular(12.r),
+        border: Border.all(color: borderColor, width: 1.5.w),
+      ),
+      child: ListTile(
+        leading: CircleAvatar(backgroundColor: iconBgColor, child: icon),
+        title: Text(
+          title,
+          style: AppTextStyles.bodyMedium.copyWith(
+            fontSize: 16.sp,
+            color: borderColor,
+          ),
+        ),
+        subtitle: Text(subtitle),
+        onTap: onTap,
+      ),
     );
   }
 }

@@ -2,7 +2,8 @@ import 'package:bierdygame/app/modules/player/playerBottomNav/controller/player_
 import 'package:bierdygame/app/modules/player/playerDashBoard/view/widget/carousel_custom.dart';
 import 'package:bierdygame/app/modules/player/playerDashBoard/view/widget/continue_game_container.dart';
 import 'package:bierdygame/app/modules/player/playerDashBoard/view/widget/custom_grid_container.dart';
-import 'package:bierdygame/app/modules/player/playerDashBoard/view/widget/join_game_card.dart';
+import 'package:bierdygame/app/modules/player/playerJoinGame/view/game_board.dart';
+import 'package:bierdygame/app/modules/player/playerJoinGame/widgets/join_game_card.dart';
 import 'package:bierdygame/app/theme/app_colors.dart';
 import 'package:bierdygame/app/theme/app_text_styles.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -150,8 +151,13 @@ class PlayerDashboardView extends GetView<PlayerDashboardController> {
               ],
             ),
             SizedBox(height: 10.h),
-            JoinGameCard(),
-            SizedBox(height:20.h),
+            JoinGameCard(
+              onTap: (){
+                                                    Get.to(()=>GameBoardView());
+
+              },
+            ),
+            SizedBox(height: 20.h),
           ],
         ),
       ),

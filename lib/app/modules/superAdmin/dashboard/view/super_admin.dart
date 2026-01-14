@@ -1,4 +1,5 @@
 import 'package:bierdygame/app/modules/superAdmin/notifications/view/notification_view.dart';
+import 'package:bierdygame/app/theme/app_text_styles.dart';
 import 'package:bierdygame/app/widgets/custom_club_detail_grid.dart';
 import 'package:bierdygame/app/widgets/custom_double_bar.dart';
 import 'package:bierdygame/app/widgets/custom_profile_bar.dart';
@@ -27,6 +28,13 @@ class SuperAdminDashboard extends StatelessWidget {
               CustomGradientGrid(),
               SizedBox(height: 20.h,),
               CustomDoubleBar(),
+              SizedBox(height: 20.h,),
+              Text("Recent Activity",style: AppTextStyles.subHeading,),
+              Text(
+                textAlign: TextAlign.center,
+                "Your Recent Activities will appear here"
+              ),
+              SizedBox(height: 30.h,)
             ],
           ),
         ),

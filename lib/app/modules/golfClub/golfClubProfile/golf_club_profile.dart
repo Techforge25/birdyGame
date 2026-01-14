@@ -1,4 +1,5 @@
 import 'package:bierdygame/app/modules/golfClub/components/custom_club_profile_card.dart';
+import 'package:bierdygame/app/modules/golfClub/controller/golf_club_controller.dart';
 import 'package:bierdygame/app/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:bierdygame/app/theme/app_colors.dart';
@@ -13,6 +14,7 @@ class GolfClubProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GolfClubController controller = Get.put(GolfClubController());
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -209,19 +211,21 @@ class GolfClubProfilePage extends StatelessWidget {
                   ),
                   CustomElevatedButton(
                     icon: Icon(Icons.block, color: AppColors.white),
-                    onPressed: () {},
+                    onPressed: controller.blockClub,
                     btnName: "Block Club",
                     backColor: AppColors.secondary,
                   ),
                   CustomElevatedButton(
                     icon: Icon(Icons.delete, color: AppColors.white),
-                    onPressed: () {},
+                    onPressed: controller.removeClub,
                     btnName: "Remove Club",
                     backColor: AppColors.darkRed,
                   ),
                   CustomElevatedButton(
-                    onPressed: () {},
-                    btnName: "X Cancel",
+                    onPressed: () {
+                      Get.back();
+                    },
+                    btnName: "Cancel",
                     textColor: AppColors.primary,
                     backColor: Colors.transparent,
                     borderColor: AppColors.primary,

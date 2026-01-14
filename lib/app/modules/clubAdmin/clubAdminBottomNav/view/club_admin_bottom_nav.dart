@@ -69,11 +69,13 @@ class ClubAdminBottomNav extends StatelessWidget {
     required IconData icon,
     required String label,
     required int index,
+    VoidCallback? onDoubleTap,
   }) {
     return Obx(() {
       bool isSelected = controller.currentIndex.value == index;
 
       return GestureDetector(
+        onDoubleTap: onDoubleTap,
         onTap: () => controller.changeTab(index),
         child: Column(
           mainAxisSize: MainAxisSize.min,

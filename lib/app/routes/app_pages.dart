@@ -8,6 +8,7 @@ import 'package:bierdygame/app/modules/clubAdmin/newGame/view/new_game_view.dart
 import 'package:bierdygame/app/modules/clubAdmin/scores/view/scores_view.dart';
 import 'package:bierdygame/app/modules/player/playerDashBoard/binding/player_dashboard_binding.dart';
 import 'package:bierdygame/app/modules/player/playerDashBoard/view/player_dashboard_view.dart';
+import 'package:bierdygame/app/modules/player/playerJoinGame/view/game_board.dart';
 import 'package:bierdygame/app/modules/superAdmin/clubs/view/club_management_sper_admin.dart';
 import 'package:bierdygame/app/modules/superAdmin/profile/view/profile_screen.dart';
 import 'package:bierdygame/app/modules/superAdmin/reportsAndAnalytics/view/reports_and_analytics.dart';
@@ -70,6 +71,11 @@ class AppPages {
   page: () => const PlayerDashboardView(),
   binding: PlayerDashboardBinding(),
 ),
+GetPage(
+  name: '/game-board',
+  page: () => GameBoardView(),
+),
+
 
   ];
 }

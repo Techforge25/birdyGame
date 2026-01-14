@@ -1,5 +1,6 @@
 import 'package:bierdygame/app/modules/player/playerDashBoard/view/widget/continue_game_container.dart';
-import 'package:bierdygame/app/modules/player/playerDashBoard/view/widget/join_game_card.dart';
+import 'package:bierdygame/app/modules/player/playerJoinGame/view/game_board.dart';
+import 'package:bierdygame/app/modules/player/playerJoinGame/widgets/join_game_card.dart';
 import 'package:bierdygame/app/theme/app_colors.dart';
 import 'package:bierdygame/app/theme/app_text_styles.dart';
 import 'package:bierdygame/app/widgets/custom_elevated_button.dart';
@@ -9,7 +10,6 @@ import 'package:bierdygame/app/widgets/status_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class PlayerJoinGame extends StatelessWidget {
   const PlayerJoinGame({super.key});
@@ -31,7 +31,11 @@ class PlayerJoinGame extends StatelessWidget {
         child: ListView(
           children: [
             const SizedBox(height: 12),
-            JoinGameCard(),
+            JoinGameCard(
+              onTap: () {
+                Get.to(() => GameBoardView());
+              },
+            ),
             SizedBox(height: 10.h),
             ContinueGameContainer(),
             SizedBox(height: 20.h),
@@ -66,17 +70,31 @@ class PlayerJoinGame extends StatelessWidget {
                       StatusContainer(
                         status: "Join",
                         onTap: () {
-                         Get.bottomSheet(
-                           CustomModal(
-                            titleStyle: AppTextStyles.bodyMedium2.copyWith(fontSize: 20,),
-                            title: "Join Game", content: CustomFormField(
-                            borderRadius: BorderRadius.circular(12.r),
-                            borderSide: BorderSide(color: AppColors.borderColorLight),
-                            hint: "Enter PassKey",
-                          ), actions: [
-                            CustomElevatedButton(onPressed: (){}, btnName: "Join Game",borderRadius: 12.r,fontSize: 20,)
-                          ])
-                         );
+                          Get.bottomSheet(
+                            CustomModal(
+                              titleStyle: AppTextStyles.bodyMedium2.copyWith(
+                                fontSize: 20,
+                              ),
+                              title: "Join Game",
+                              content: CustomFormField(
+                                borderRadius: BorderRadius.circular(12.r),
+                                borderSide: BorderSide(
+                                  color: AppColors.borderColorLight,
+                                ),
+                                hint: "Enter PassKey",
+                              ),
+                              actions: [
+                                CustomElevatedButton(
+                                  onPressed: () {
+                                    Get.to(() => GameBoardView());
+                                  },
+                                  btnName: "Join Game",
+                                  borderRadius: 12.r,
+                                  fontSize: 20,
+                                ),
+                              ],
+                            ),
+                          );
                         },
                         color: AppColors.flashyGreen,
                       ),

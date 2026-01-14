@@ -2,7 +2,7 @@ import 'package:bierdygame/app/modules/clubAdmin/dashboard/view/dashboard_view.d
 import 'package:bierdygame/app/modules/clubAdmin/games/view/manage_games.dart';
 import 'package:bierdygame/app/modules/clubAdmin/newGame/view/new_game_view.dart';
 import 'package:bierdygame/app/modules/clubAdmin/scores/view/scores_view.dart';
-import 'package:bierdygame/app/modules/golfClub/profile/profile.dart';
+import 'package:bierdygame/app/modules/golfClub/golfClubProfile/golf_club_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

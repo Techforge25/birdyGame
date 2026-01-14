@@ -107,7 +107,7 @@ class EditProfileScreen extends StatelessWidget {
             /// -------- ACCOUNT ACTIONS ----------
             Align(
               alignment: Alignment.centerLeft,
-              child: Text("Account Actions", style: AppTextStyles.bodyLarge),
+              child: Text("Account Actions", style: AppTextStyles.bodyMedium2),
             ),
 
             SizedBox(height: 8.h),

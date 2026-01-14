@@ -1,12 +1,15 @@
+import 'package:bierdygame/app/modules/player/playerJoinGame/controller/player_join_game_controller.dart';
 import 'package:bierdygame/app/theme/app_colors.dart';
 import 'package:bierdygame/app/theme/app_text_styles.dart';
 import 'package:bierdygame/app/widgets/custom_elevated_button.dart';
 import 'package:bierdygame/app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class JoinGameCard extends StatelessWidget {
-  const JoinGameCard({super.key});
+    final VoidCallback? onTap;
+  const JoinGameCard({super.key, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +42,9 @@ class JoinGameCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: CustomElevatedButton(
-                      onPressed: () {},
+                      onPressed: onTap ?? () {
+                         //want to naviate on GameBoardView without hiding Bottom NAv
+                      },
                       btnName: "Join Game",
                       backColor: AppColors.primary,
                       textColor: AppColors.white,

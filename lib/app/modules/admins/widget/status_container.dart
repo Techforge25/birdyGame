@@ -20,7 +20,7 @@ Widget buildWidgetStatus({
         height: 40,
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
-          color: Colors.grey.shade200,
+          color: AppColors.white,
           borderRadius: BorderRadius.circular(25),
         ),
         child: Row(
@@ -29,8 +29,10 @@ Widget buildWidgetStatus({
               title: "Active",
               isSelected: status,
               onTap: () => onChanged(true),
+              color: AppColors.primary
             ),
             _statusItem(
+              color: AppColors.darkRed,
               title: "Inactive",
               isSelected: !status,
               onTap: () => onChanged(false),
@@ -45,6 +47,7 @@ Widget _statusItem({
   required String title,
   required bool isSelected,
   required VoidCallback onTap,
+  required Color color
 }) {
   return Expanded(
     child: GestureDetector(
@@ -53,7 +56,7 @@ Widget _statusItem({
         duration: const Duration(milliseconds: 250),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.primary : Colors.transparent,
+          color: isSelected ? color : Colors.transparent,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Text(

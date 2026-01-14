@@ -1,4 +1,4 @@
-import 'package:bierdygame/app/modules/golfClub/profile/profile.dart';
+import 'package:bierdygame/app/modules/golfClub/golfClubProfile/golf_club_profile.dart';
 import 'package:bierdygame/app/modules/superAdmin/clubs/controller/super_admin_clubs_controller.dart';
 import 'package:bierdygame/app/modules/superAdmin/super_admin_bottom_nav/controller/super_admin_bot_nav_controller.dart';
 import 'package:bierdygame/app/modules/superAdmin/widgets/add_club_modal.dart';
@@ -10,48 +10,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class SuperAdminClubManagement extends GetView<SuperAdminClubManagementController> {
+class SuperAdminClubManagement
+    extends GetView<SuperAdminClubManagementController> {
   const SuperAdminClubManagement({super.key});
 
   @override
   Widget build(BuildContext context) {
     Get.put(SuperAdminClubManagementController());
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Club Management", style: AppTextStyles.miniHeadings),
+        centerTitle: true,
+        backgroundColor: AppColors.scaffoldBackground,
+      ),
       floatingActionButton: FloatingActionButton(
         shape: CircleBorder(),
         backgroundColor: AppColors.primary,
-        onPressed: (){
+        onPressed: () {
           Get.bottomSheet(
-                AddClubModal(),
-                ignoreSafeArea: true,
-                isScrollControlled: true,
-              );
+            AddClubModal(),
+            ignoreSafeArea: true,
+            isScrollControlled: true,
+          );
         },
-        child: Icon(Icons.add,color: AppColors.white,size: 28.h,),
-        ),
+        child: Icon(Icons.add, color: AppColors.white, size: 28.h),
+      ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20,),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      // Go back to Dashboard tab
-                      Get.find<SuperAdminBotNavController>().changeTab(0);
-                    },
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      size: 22,
-                      color: AppColors.primary,
-                    ),
-                  ),
-                  SizedBox(width: 100.w),
-                  Text("Club Management", style: AppTextStyles.miniHeadings),
-                ],
-              ),
               SizedBox(height: 15.h),
               CustomTextField(
                 prefixIcon: const Icon(Icons.search),
@@ -95,56 +84,53 @@ class SuperAdminClubManagement extends GetView<SuperAdminClubManagementControlle
 
   /// List of All Clubs
   Widget _allClubs() {
-  // Sample data
-  final clubs = [
-    {"name": "GreenShot Golf Club", "location": "Augusta, GA"},
-    {"name": "Emerald Hills Country", "location": "Scottsdale, AZ"},
-    {"name": "Sunset Valley Club", "location": "Phoenix, AZ"},
-    {"name": "GreenShot Golf Club", "location": "Augusta, GA"},
-  ];
+    // Sample data
+    final clubs = [
+      {"name": "GreenShot Golf Club", "location": "Augusta, GA"},
+      {"name": "Emerald Hills Country", "location": "Scottsdale, AZ"},
+      {"name": "Sunset Valley Club", "location": "Phoenix, AZ"},
+      {"name": "GreenShot Golf Club", "location": "Augusta, GA"},
+    ];
 
-  return ListView.builder(
-    shrinkWrap: true, 
-    itemCount: clubs.length,
-    itemBuilder: (context, index) {
-      final club = clubs[index];
-      return Padding(
-        padding: EdgeInsets.only(bottom: 10.h),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12.r),
-            color: AppColors.white,
-          ),
-          child: ListTile(
-            leading: const CircleAvatar(),
-            title: Text(club["name"]!),
-            subtitle: Text(club["location"]!),
-            trailing: GestureDetector(
-              onTap: () {
-                Get.to(
-                  () => GolfClubProfilePage(nameOfClub: club["name"]!),
-                  transition: Transition.rightToLeft,
-                );
-              },
-              child: Icon(
-                Icons.arrow_forward_ios,
-                size: 22,
-                color: AppColors.primary,
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: clubs.length,
+      itemBuilder: (context, index) {
+        final club = clubs[index];
+        return Padding(
+          padding: EdgeInsets.only(bottom: 10.h),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12.r),
+              color: AppColors.white,
+            ),
+            child: ListTile(
+              leading: const CircleAvatar(),
+              title: Text(club["name"]!),
+              subtitle: Text(club["location"]!),
+              trailing: GestureDetector(
+                onTap: () {
+                  Get.to(
+                    () => GolfClubProfilePage(nameOfClub: club["name"]!),
+                    transition: Transition.rightToLeft,
+                  );
+                },
+                child: Icon(
+                  Icons.arrow_forward_ios,
+                  size: 22,
+                  color: AppColors.primary,
+                ),
               ),
             ),
           ),
-        ),
-      );
-    },
-  );
-}
-
+        );
+      },
+    );
+  }
 
   /// Active Clubs placeholder
   Widget _activeClubs() => const Text("Active Clubs");
 
   /// Blocked Clubs placeholder
   Widget _blockedClubs() => const Text("Blocked Clubs");
-
-  
 }

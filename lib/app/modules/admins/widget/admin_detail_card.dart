@@ -1,5 +1,4 @@
 import 'package:bierdygame/app/theme/app_colors.dart';
-import 'package:bierdygame/app/theme/app_text_styles.dart';
 import 'package:bierdygame/app/widgets/status_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,7 +13,7 @@ Widget buildAdminDetailCard(){
               ),
               child: Column(
                 children: [
-                  CircleAvatar(radius: 50),
+                  CircleAvatar(radius: 50,backgroundImage: AssetImage("assets/images/dashboard_img.png"),),
                   SizedBox(height: 10.h),
                   Text("Admin Name"),
                   Row(

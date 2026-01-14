@@ -33,7 +33,7 @@ class SuperAdminBottomNav extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _navItem(
-                icon: Icons.home,
+                icon: Icons.home_outlined,
                 label: "Home",
                 index: 0,
                 ),
@@ -44,11 +44,11 @@ class SuperAdminBottomNav extends StatelessWidget {
                 ),
               _navItem(
                 icon: Icons.add_outlined,
-                label: "New Game",
+                label: "New Club",
                 index: 2,
                 ),
               _navItem(
-                icon: Icons.admin_panel_settings,
+                icon: Icons.admin_panel_settings_outlined,
                 label: "Admins",
                 index: 3,
               ),

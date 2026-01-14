@@ -1,6 +1,7 @@
-import 'package:bierdygame/app/modules/clubAdmin/profile/view/club_profile_view.dart';
+import 'package:bierdygame/app/modules/clubAdmin/clubAdminProfile/view/club_profile_view.dart';
 import 'package:bierdygame/app/modules/player/playerStats/controller/player_stats_controller.dart';
 import 'package:bierdygame/app/modules/player/playerStats/widgets/performance_overview_container.dart';
+import 'package:bierdygame/app/modules/player/playerStats/widgets/teams_play_with_container.dart';
 import 'package:bierdygame/app/theme/app_colors.dart';
 import 'package:bierdygame/app/theme/app_text_styles.dart';
 import 'package:bierdygame/app/widgets/custom_club_detail_grid.dart';
@@ -20,8 +21,9 @@ class PlayerStatsView extends GetView<PlayerStatsController> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: true,
           backgroundColor: Colors.transparent,
-          automaticallyImplyLeading: false,
+          leading: IconButton(onPressed: onBack, icon: Icon(Icons.arrow_back_ios)),
           title: Text(
             "Stats",
             style: AppTextStyles.bodyMedium2.copyWith(
@@ -35,29 +37,47 @@ class PlayerStatsView extends GetView<PlayerStatsController> {
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(radius: 50,backgroundImage: AssetImage("assets/images/dashboard_img.png"),),
-                Text(
-                  "Player Name",
-                  style: AppTextStyles.bodyLarge.copyWith(fontSize: 18),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                    color: Color(0xffCFE8DC),
-                    borderRadius: BorderRadius.circular(20.r),
-                  ),
-                  child: Text(
-                    "Active button",
-                    style: AppTextStyles.bodyMedium.copyWith(
-                      color: AppColors.primary,
-                    ),
+                Center(
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 50,
+                        backgroundImage: AssetImage(
+                          "assets/images/dashboard_img.png",
+                        ),
+                      ),
+                      Text(
+                        "Player Name",
+                        style: AppTextStyles.bodyLarge.copyWith(fontSize: 18),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 5,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Color(0xffCFE8DC),
+                          borderRadius: BorderRadius.circular(20.r),
+                        ),
+                        child: Text(
+                          "Active button",
+                          style: AppTextStyles.bodyMedium.copyWith(
+                            color: AppColors.primary,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(height: 10.h),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text("Stats Overview", style: AppTextStyles.bodyMedium2),
+                  child: Text(
+                    "Stats Overview",
+                    style: AppTextStyles.bodyMedium2,
+                  ),
                 ),
                 SizedBox(height: 10.h),
                 Container(
@@ -118,25 +138,147 @@ class PlayerStatsView extends GetView<PlayerStatsController> {
                 ),
                 SizedBox(height: 8.h),
                 PerformanceOverviewContainer(),
-                SizedBox(height: 8.h,),
+                SizedBox(height: 8.h),
                 ListTile(
-                  trailing: IconButton(onPressed: (){
-                    Get.to(()=>TeamProfileView(onBack: (){
-                      Get.back();
-                    }));
-                  }, icon: Icon(Icons.arrow_forward_ios,color: AppColors.primary,)),
-                  tileColor: AppColors.white,
-                leading: Container(
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    color: AppColors.primary,
-                    shape: BoxShape.circle,
+                  trailing: IconButton(
+                    onPressed: () {
+                      Get.to(
+                        () => TeamProfileView(
+                          onBack: () {
+                            Get.back();
+                          },
+                        ),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.primary,
+                    ),
                   ),
-                  child: Icon(Icons.sports_golf,color: AppColors.white,),
+                  tileColor: AppColors.white,
+                  leading: Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: AppColors.primary,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(Icons.sports_golf, color: AppColors.white),
+                  ),
+                  title: Text("Team Eagle", style: AppTextStyles.bodyMedium2),
+                  subtitle: Text(
+                    "member since 2023",
+                    style: AppTextStyles.bodySmall,
+                  ),
                 ),
-                title: Text("Team Eagle",style: AppTextStyles.bodyMedium2,),
-                subtitle: Text("member since 2023",style: AppTextStyles.bodySmall,),
-              ),
+                SizedBox(height: 10.h),
+                Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.primary,
+                      ),
+                      child: Icon(Icons.star, color: AppColors.white, size: 12),
+                    ),
+                    SizedBox(width: 10.w),
+                    Text(
+                      "Highlights",
+                      style: AppTextStyles.bodyMedium.copyWith(
+                        color: AppColors.borderColor,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10.h),
+                Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: AppColors.flashyGreen,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.bolt, color: AppColors.primary),
+                          SizedBox(width: 8.w),
+                          Text(
+                            "Best : 9 Birdies",
+                            style: AppTextStyles.bodyMedium.copyWith(
+                              color: AppColors.textBlack,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: 8.w),
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: AppColors.flashyGreen,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.local_fire_department,
+                            color: AppColors.primary,
+                          ),
+                          SizedBox(width: 8.w),
+                          Text(
+                            "Best : 9 Birdies",
+                            style: AppTextStyles.bodyMedium.copyWith(
+                              color: AppColors.textBlack,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 15.h,),
+                Text(
+                  "Team Play With",
+                  style: AppTextStyles.bodyMedium2.copyWith(
+                    color: AppColors.textBlack,
+                  ),
+                ),
+                SizedBox(height: 15.h,),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    spacing: 10.h,
+                    children: [
+                       TeamsPlayWithContainer(
+                            iconBgColor: AppColors.flashyPurple,
+                            icon: Icon(Icons.golf_course,color: AppColors.darkPurple,),
+                            teamName: "The Eagles",
+                            gamesPerTeam: "6 Games",
+                          ),
+                           TeamsPlayWithContainer(
+                            iconBgColor: AppColors.flashyYellow,
+                            icon: Icon(Icons.golf_course,color: AppColors.secondary,),
+                            teamName: "The Tigers",
+                            gamesPerTeam: "6 Games",
+                          ),
+                           TeamsPlayWithContainer(
+                            iconBgColor: AppColors.textBlack,
+                            icon: Icon(Icons.golf_course,color: AppColors.borderColorLight,),
+                            teamName: "The Crows",
+                            gamesPerTeam: "4 Games",
+                          ), TeamsPlayWithContainer(
+                            iconBgColor: AppColors.flashyGreen,
+                            icon: Icon(Icons.golf_course,color: AppColors.primary,),
+                            teamName: "The Frogs",
+                            gamesPerTeam: "6 Games",
+                          ),
+                    ],
+                  ),
+                ),
+             
               ],
             ),
           ),

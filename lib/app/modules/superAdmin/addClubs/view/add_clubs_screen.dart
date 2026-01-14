@@ -144,192 +144,176 @@ class _AddClubsScreenState extends State<AddClubsScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.scaffoldBackground,
         surfaceTintColor: Colors.white,
-        centerTitle: false,
-        title: Row(
-          children: [
-            GestureDetector(
-              onTap: () {
-                Get.find<SuperAdminBotNavController>().changeTab(0);
-              },
-              child: Icon(
-                Icons.arrow_back_ios,
-                size: 22,
-                color: AppColors.primary,
-              ),
-            ),
-            SizedBox(width: 120.w),
-            Text("Add new Club", style: AppTextStyles.miniHeadings),
-          ],
-        ),
+        centerTitle: true,
+        title: Text("Add new Club", style: AppTextStyles.miniHeadings),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          child: SingleChildScrollView(
-            child: Column(
-              spacing: 16.0,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 5.h),
-                Container(
-                  padding: EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    spacing: 16.0,
-                    children: [
-                      CustomFormField(
-                        borderSide: BorderSide(
-                          width: 1.5,
-                          color: AppColors.borderColorLight,
-                        ),
-                        label: "Club Name",
-                        hint: "Enter Club Name",
-                        labeltextStyle: AppTextStyles.bodyMedium.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: SingleChildScrollView(
+          child: Column(
+            spacing: 16.0,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 5.h),
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 16.0,
+                  children: [
+                    CustomFormField(
+                      borderSide: BorderSide(
+                        width: 1.5,
+                        color: AppColors.borderColorLight,
                       ),
-                      CustomFormField(
-                        borderSide: BorderSide(
-                          width: 1.5,
-                          color: AppColors.borderColorLight,
-                        ),
-                        label: "Location/City",
-                        hint: "Enter city",
-                        labeltextStyle: AppTextStyles.bodyMedium.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                      label: "Club Name",
+                      hint: "Enter Club Name",
+                      labeltextStyle: AppTextStyles.bodyMedium.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
-                      Text(
-                        "Logo Upload",
-                        style: AppTextStyles.bodyMedium.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                    ),
+                    CustomFormField(
+                      borderSide: BorderSide(
+                        width: 1.5,
+                        color: AppColors.borderColorLight,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: DottedBorder(
-                          options: RectDottedBorderOptions(
-                            strokeWidth: 2,
-                            dashPattern: [6, 6],
-                            color: AppColors.primary,
-                          ),
-                          child: SizedBox(
-                            width: double.infinity,
-                            height: 200.h,
-                            child: Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                spacing: 10.h,
-                                children: [
-                                  Container(
-                                    height: 40.h,
-                                    width: 40.w,
-                                    decoration: BoxDecoration(
-                                      color: AppColors.flashyGreen,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Icon(
-                                      Icons.upload_file_outlined,
-                                      color: AppColors.primary,
-                                    ),
+                      label: "Location/City",
+                      hint: "Enter city",
+                      labeltextStyle: AppTextStyles.bodyMedium.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      "Logo Upload",
+                      style: AppTextStyles.bodyMedium.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: DottedBorder(
+                        options: RectDottedBorderOptions(
+                          strokeWidth: 2,
+                          dashPattern: [6, 6],
+                          color: AppColors.primary,
+                        ),
+                        child: SizedBox(
+                          width: double.infinity,
+                          height: 200.h,
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              spacing: 10.h,
+                              children: [
+                                Container(
+                                  height: 40.h,
+                                  width: 40.w,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.flashyGreen,
+                                    shape: BoxShape.circle,
                                   ),
-                                  Text(
-                                    "Upload the Club Logo",
-                                    style: AppTextStyles.bodyMedium.copyWith(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18.sp,
-                                    ),
+                                  child: Icon(
+                                    Icons.upload_file_outlined,
+                                    color: AppColors.primary,
                                   ),
-                                  Text(
-                                    "SVG,PNG,JPG (max. 400x400px)",
-                                    style: AppTextStyles.bodyMedium.copyWith(
-                                      fontSize: 16.sp,
-                                    ),
+                                ),
+                                Text(
+                                  "Upload the Club Logo",
+                                  style: AppTextStyles.bodyMedium.copyWith(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.sp,
                                   ),
-                                ],
-                              ),
+                                ),
+                                Text(
+                                  "SVG,PNG,JPG (max. 400x400px)",
+                                  style: AppTextStyles.bodyMedium.copyWith(
+                                    fontSize: 16.sp,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Master Admin Setup",
-                      style: AppTextStyles.bodyLarge.copyWith(fontSize: 20.sp),
-                    ),
-                    Text(
-                      "This will create the primary administrator account.",
-                      style: AppTextStyles.bodySmall,
                     ),
                   ],
                 ),
-                _adminList(),
-                if (showAddAdminForm) _addAdminForm(),
-        
-                /// ---- ADD BUTTON ----
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 70),
-                  child: GestureDetector(
-                    onTap: () {
-                      if (admins.length >= maxAdmins) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text("Maximum of 5 admins per club"),
-                          ),
-                        );
-                        return;
-                      }
-                      setState(() => showAddAdminForm = true);
-                    },
-                    child: Container(
-                      height: 40.h,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: AppColors.flashyGreen,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      alignment: Alignment.center,
-                      child: Text(
-                        "+ Add another Admin",
-                        style: AppTextStyles.bodyMedium.copyWith(
-                          color: AppColors.primary,
-                          fontSize: 18.sp,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Master Admin Setup",
+                    style: AppTextStyles.bodyLarge.copyWith(fontSize: 20.sp),
+                  ),
+                  Text(
+                    "This will create the primary administrator account.",
+                    style: AppTextStyles.bodySmall,
+                  ),
+                ],
+              ),
+              _adminList(),
+              if (showAddAdminForm) _addAdminForm(),
+      
+              /// ---- ADD BUTTON ----
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 70),
+                child: GestureDetector(
+                  onTap: () {
+                    if (admins.length >= maxAdmins) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Maximum of 5 admins per club"),
                         ),
+                      );
+                      return;
+                    }
+                    setState(() => showAddAdminForm = true);
+                  },
+                  child: Container(
+                    height: 40.h,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: AppColors.flashyGreen,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "+ Add another Admin",
+                      style: AppTextStyles.bodyMedium.copyWith(
+                        color: AppColors.primary,
+                        fontSize: 18.sp,
                       ),
                     ),
                   ),
                 ),
-        
-                SizedBox(height: 8.h),
-        
-                Center(
-                  child: Text(
-                    "Maximum of 5 admins per club.",
-                    style: AppTextStyles.bodySmall,
-                  ),
+              ),
+      
+              SizedBox(height: 8.h),
+      
+              Center(
+                child: Text(
+                  "Maximum of 5 admins per club.",
+                  style: AppTextStyles.bodySmall,
                 ),
-                ModalFooterBtn(
-                  text1: "Create Club",
-                  text2: "Cancel",
-                  onTap1: _onSaveChanges,
-                  onTap2: () {
-                    Get.find<SuperAdminBotNavController>().changeTab(0);
-                  },
-                ),
-              ],
-            ),
+              ),
+              ModalFooterBtn(
+                text1: "Create Club",
+                text2: "Cancel",
+                onTap1: _onSaveChanges,
+                onTap2: () {
+                  Get.find<SuperAdminBotNavController>().changeTab(0);
+                },
+              ),
+              SizedBox(height: 20.h,),
+            ],
           ),
         ),
       ),
